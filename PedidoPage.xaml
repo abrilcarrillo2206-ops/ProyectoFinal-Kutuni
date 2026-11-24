@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal.Views.PedidoPage"
+             Title="Mi Pedido"
+             BackgroundColor="#F8FAFC">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+        <Label Text="Resumen de tu Pedido" FontSize="22" FontAttributes="Bold" HorizontalOptions="Center" />
+
+        <CollectionView x:Name="listaPedido" HeightRequest="320">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="10" Margin="0,5" BorderColor="#E0E0E0">
+                        <Grid ColumnDefinitions="*, Auto">
+                            <VerticalStackLayout Grid.Column="0">
+                                <Label Text="{Binding Nombre}" FontAttributes="Bold" FontSize="16" />
+                                <Label Text="{Binding Artesano, StringFormat='Artesano: {0}'}" FontSize="12" TextColor="Gray" />
+                            </VerticalStackLayout>
+                            <Label Text="{Binding Precio, StringFormat='${0:F2}'}" Grid.Column="1"
+                                   VerticalOptions="Center" FontAttributes="Bold" TextColor="#2E7D32" />
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Label x:Name="lblTotal" Text="Total a pagar: $0.00" FontSize="20" FontAttributes="Bold"
+               HorizontalOptions="End" TextColor="#1B5E20" />
+
+        <HorizontalStackLayout Spacing="15" HorizontalOptions="Center">
+            <Button Text="Vaciar Pedido" Clicked="OnVaciarClicked" BackgroundColor="#757575" TextColor="White" />
+            <Button Text="Confirmar Pedido" Clicked="OnConfirmarClicked" BackgroundColor="#2E7D32" TextColor="White" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal.Views.CatalogoPage"
+             Title="Catálogo Kutuni"
+             BackgroundColor="#F8FAFC">
+
+    <VerticalStackLayout Padding="20" Spacing="10">
+        <Label Text="Artesanías Disponibles" FontSize="22" FontAttributes="Bold" TextColor="#1F2937" HorizontalOptions="Center" />
+
+        <SearchBar x:Name="buscador" 
+                   Placeholder="Buscar artesanía o artesano..." 
+                   TextColor="#1F2937" 
+                   PlaceholderColor="#6B7280" 
+                   BackgroundColor="White"
+                   TextChanged="OnBuscarTextChanged" />
+
+        <CollectionView x:Name="listaCatalogo" HeightRequest="450">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Stroke="#D7CCC8" StrokeThickness="1" StrokeShape="RoundRectangle 12" BackgroundColor="#FFFDF9" Padding="12" Margin="0,6">
+                        <Grid ColumnDefinitions="85, *, Auto" ColumnSpacing="12">
+                            <Image Source="{Binding ImagenRuta}" 
+                                   Aspect="AspectFill" 
+                                   HeightRequest="85" 
+                                   WidthRequest="85" 
+                                   Grid.Column="0" />
+
+                            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                                <Label Text="{Binding Nombre}" FontAttributes="Bold" FontSize="16" TextColor="#1F2937" />
+                                <Label Text="{Binding Artesano, StringFormat='Por: {0}'}" FontSize="12" TextColor="#4B5563" />
+                                <Label Text="{Binding Precio, StringFormat='${0:F2}'}" TextColor="#2E7D32" FontAttributes="Bold" FontSize="15" />
+                            </VerticalStackLayout>
+
+                            <Button Text="+ Pedir" 
+                                    Grid.Column="2" 
+                                    VerticalOptions="Center"
+                                    Clicked="OnAgregarPedidoClicked" 
+                                    BackgroundColor="#1B4965" 
+                                    TextColor="White" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

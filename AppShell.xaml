@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="ProyectoFinal.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:ProyectoFinal.Views"
+    Shell.BackgroundColor="#1B4965"
+    Shell.TitleColor="White"
+    Title="Kutuni">
+
+    <TabBar>
+        <ShellContent
+            Title="Catálogo"
+            ContentTemplate="{DataTemplate views:CatalogoPage}"
+            Route="CatalogoPage" />
+
+        <ShellContent
+            Title="Mi Pedido"
+            ContentTemplate="{DataTemplate views:PedidoPage}"
+            Route="PedidoPage" />
+
+        <ShellContent
+            Title="Administrar"
+            ContentTemplate="{DataTemplate views:AdminPage}"
+            Route="AdminPage" />
+        
+    </TabBar>
+
+</Shell>
